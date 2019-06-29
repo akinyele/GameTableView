@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <TextView
+            android:id="@+id/tableBorderHeading"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_borders_options_heading"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+            android:id="@+id/borderEnabledLabel"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/text_margin"
+            android:text="@string/string_border_enabled_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tableBorderHeading" />
+
+    <CheckBox
+            android:id="@+id/borderEnableCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/borderEnabledLabel"
+            app:layout_constraintStart_toEndOf="@id/borderEnabledLabel"
+            app:layout_constraintTop_toTopOf="@id/borderEnabledLabel" />
+
+    <TextView
+            android:id="@+id/borderWidthLabel"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin"
+            android:text="@string/string_border_width_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/borderEnabledLabel" />
+
+    <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/borderWithSeekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/borderWidthLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier2"
+            app:layout_constraintTop_toTopOf="@id/borderWidthLabel" />
+
+    <TextView
+            android:id="@+id/borderColorLabel"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin"
+            android:text="@string/string_border_color_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/borderWidthLabel" />
+
+
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_oval_border"
+            android:layout_marginStart="8dp"
+            android:padding="1dp"
+            app:layout_constraintBottom_toBottomOf="@+id/borderColorLabel"
+            app:layout_constraintStart_toEndOf="@+id/barrier2"
+            app:layout_constraintTop_toTopOf="@+id/borderColorLabel">
+
+        <ImageView
+                android:id="@+id/borderColorImageView"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/bg_oval"/>
+
+    </RelativeLayout>
+
+
+    <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="borderColorLabel,borderWidthLabel,borderEnabledLabel"
+            tools:layout_editor_absoluteY="96dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="vertical"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="?actionBarSize"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_gravity="center"
+            android:background="#F3F3F3"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+        <TextView
+                style="@style/TextAppearance.MaterialComponents.Headline4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/string_bottom_sheet_table_view_heading"
+                android:textAlignment="center" />
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+            <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+            <!-- Table -->
+            <include layout="@layout/item_table_background" />
+
+            <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+
+            <!-- Edge -->
+            <include layout="@layout/item_table_corner_options" />
+
+            <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+            <!-- Border -->
+            <include layout="@layout/item_table_border_options" />
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

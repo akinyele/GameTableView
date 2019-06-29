@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Game Table View Sample</string>
+    <string name="string_background_heading">Background</string>
+    <string name="string_elevation_seekbar_label">Elevation</string>
+    <string name="string_background_color_selector_label">Color</string>
+    <string name="string_bottom_sheet_table_view_heading">Table View</string>
+    <string name="string_border_color_label">Border Color</string>
+    <string name="string_border_width_label">Border Width</string>
+    <string name="string_table_corners_options_heading">Corners</string>
+    <string name="string_borders_options_heading">Borders</string>
+    <string name="string_border_enabled_label">Border Enabled</string>
+
+
+    <string-array name="table_corners">
+        <item name="normal_corner">Normal</item>
+        <item name="rounded_corner">Rounded</item>
+        <item name="scallop_corner">Scallop</item>
+        <item name="edge_corner">Edge</item>
+    </string-array>
+
+
+</resources>

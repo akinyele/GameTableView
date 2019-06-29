@@ -1,0 +1,2 @@
+include ':app', ':gametableview'
+rootProject.name='Game Table View Sample'
