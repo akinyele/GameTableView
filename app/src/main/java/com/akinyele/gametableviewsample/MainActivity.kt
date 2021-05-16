@@ -12,7 +12,9 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.akinyele.gametableview.GameTableView
 import com.akinyele.gametableview.Utils
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.thebluealliance.spectrum.SpectrumDialog
+import kotlinx.android.synthetic.main.content_bottom_sheet.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.item_table_background.*
 import kotlinx.android.synthetic.main.item_table_border_options.*
@@ -25,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         val TAG = this::class.simpleName
     }
 
+    private lateinit var mBottomSheetBehaviour: BottomSheetBehavior<View>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -36,8 +40,40 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onBackPressed() {
+        when (mBottomSheetBehaviour.state) {
+            BottomSheetBehavior.STATE_COLLAPSED -> super.onBackPressed()
+            BottomSheetBehavior.STATE_EXPANDED -> mBottomSheetBehaviour.state = BottomSheetBehavior.STATE_COLLAPSED
+            else -> {}
+        }
+    }
+    private fun setUpBottomSheet() {
+        mBottomSheetBehaviour = BottomSheetBehavior.from(bottomSheet)
+        mBottomSheetBehaviour.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback(){
+            override fun onStateChanged(view: View, newState: Int) {
+                Log.w(TAG, "Bottom sheet new state $newState")
+                when (newState) {
+                    BottomSheetBehavior.STATE_COLLAPSED -> {}
+                    BottomSheetBehavior.STATE_EXPANDED -> {}
+                    else->{}
+                }
+            }
+            override fun onSlide(p0: View, p1: Float) {}
+        })
+
+        bottomSheetHeader.setOnClickListener {
+            when(mBottomSheetBehaviour.state) {
+                BottomSheetBehavior.STATE_COLLAPSED -> { mBottomSheetBehaviour.state = BottomSheetBehavior.STATE_EXPANDED }
+                BottomSheetBehavior.STATE_EXPANDED -> { mBottomSheetBehaviour.state = BottomSheetBehavior.STATE_COLLAPSED }
+                else->{}
+            }
+        }
+    }
+
 
     private fun setBottomSheetViewOptions() {
+
+        setUpBottomSheet()
 
         //Table background Options
         elevationSeekBar.max = 24
@@ -52,6 +88,7 @@ class MainActivity : AppCompatActivity() {
         borderEnableCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
             gameTableView.mShowBorder = isChecked
         }
+
         borderColorImageView.setOnClickListener {
             showColorPicker(
                 gameTableView.mTableBorderColor,
